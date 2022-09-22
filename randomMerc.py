@@ -24,7 +24,6 @@ def GetArgs():
                        type=int,
                        nargs='?',
                        const=-1,
-                       default=argparse.SUPPRESS,
                        help='If supplied, will use "Amalgam" card mode--create cards from random top & bottom halves. Defaults to making all Mercenaries amalgams; supply a number to only make that many amalgams.',
                        required=False)
     parser.add_argument('-lc','--levelcards',
@@ -129,9 +128,11 @@ if __name__ == "__main__":
     if not levelCards:
         levelCards = 2
 
-    if amalgam:
+    if amalgam is not None:
         if amalgam >= numCharacters or amalgam < 0:
             amalgam = numCharacters
+    else:
+        amalgam = -1
 
     amalgamating = []
 
@@ -328,15 +329,15 @@ if __name__ == "__main__":
         for i in range(0,len(abilityTopsByLevel)-1):
             for j in range(0, len(abilityTopsByLevel[i])-1):
                 if ghu.ParseForBrokenTopAbilities(abilityTopsByLevel[i][j]):
-                    newAbilityTops[i].pop(j)
-                    newLayoutTops[i].pop(j)
-                    newDiscardTops[i].pop(j)
+                    newAbilityTops[i].remove(abilityTopsByLevel[i][j])
+                    newLayoutTops[i].remove(abilityTopLayoutByLevel[i][j])
+                    newDiscardTops[i].remove(abilityTopDiscardByLevel[i][j])
         for i in range(0,len(abilityBottomsByLevel)-1):
             for j in range(0,len(abilityBottomsByLevel[i])-1):
                 if ghu.ParseForBrokenBotAbilities(abilityBottomsByLevel[i][j]):
-                    newAbilityBottoms[i].pop(j)
-                    newLayoutBottoms[i].pop(j)
-                    newDiscardBottoms[i].pop(j)
+                    newAbilityBottoms[i].remove(abilityBottomsByLevel[i][j])
+                    newLayoutBottoms[i].remove(abilityBottomLayoutByLevel[i][j])
+                    newDiscardBottoms[i].remove(abilityBottomDiscardByLevel[i][j])
         # Loop through all of new character's abilities
         # 
         for i in range(0,len(characterAbilities)):
