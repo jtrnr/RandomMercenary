@@ -87,11 +87,11 @@ if __name__ == "__main__":
     if hpIncrease:
         if type(hpIncrease) is list:
             if len(hpIncrease) == 2:
-                HPIncreaseMin = startHP[0]
-                HPIncreaseMax = startHP[1]
+                HPIncreaseMin = hpIncrease[0]
+                HPIncreaseMax = hpIncrease[1]
             elif len(hpIncrease) == 1:
-                HPIncreaseMin = startHP[0]
-                HPIncreaseMax = startHP[0]
+                HPIncreaseMin = hpIncrease[0]
+                HPIncreaseMax = hpIncrease[0]
             else:
                 sys.exit("If supplied, HP Increase must be exactly one or two floats: '-hi 2.5' or '-hp 0.5 2.7' for example")
     else:
