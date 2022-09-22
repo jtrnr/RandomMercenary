@@ -2,6 +2,7 @@
 ## Gloomhaven Mercenary Randomizer
 
 **Overview**
+
 Creates an arbitrary number of random mercenaries in the form of modded YAML files that can be imported into Gloomhaven Digital as a mod.
 This repository does not contain any actual Gloomhaven Digital data files.
 In order to use the scripts in this repository, you must already own a copy of Gloomhaven Digital.
@@ -45,6 +46,7 @@ Keep a note of the path to the mod directory and the specific mod.
 ## Creating Random Mercenaries
 
 **Basic Usage**
+
 `python randomMerc.py -mp PATH_TO_GLOOMHAVEN_MOD -nm NUM_MERCS`
 
 Example:
@@ -58,6 +60,7 @@ To do this, start Gloomhaven. From the main menu select:
 Create a new ruleset. Select the mod you created. Compile the ruleset. Then select Play and start a new campaign.
 
 **Optional Arguments**
+
 `python randomMerc.py -mp MOD_PATH -nm NUM_MERCS -jotl -hs NUM_CARDS -pp NUM_PERKS -hp NUM_HP -hi NUM_INCREASE -lc NUM_CARDS -am NUM_AMALGAMS`
 -  `-jotl` || `--jawsofthelion`
 	- Supplying this flag will put Jaws of the Lion mercenaries and ability cards into the card and character model pools.
@@ -102,6 +105,7 @@ Create a new ruleset. Select the mod you created. Compile the ruleset. Then sele
 
 ## Further Reading
 **What is randomized**
+
 - Mercenary Models
 	- Chosen from the currently available mercenary models.
 - Mercenary Class Names
@@ -125,6 +129,7 @@ Create a new ruleset. Select the mod you created. Compile the ruleset. Then sele
 	- Optionally can give each Mercenary a user-specified number or range of Perk Point unlocks (see Optional Argument `-pp`).
 
 **Currently unsupported features**
+
 - Custom mercenary models
 	- Gloomhaven itself does not officially support this feature; out of scope.
 - "True Random" Card Pools
@@ -135,6 +140,7 @@ Create a new ruleset. Select the mod you created. Compile the ruleset. Then sele
 	- Either shuffle the Scenarios themselves or create novel scenarios using a direct algorithm or machine learning approach; implementation TBD.
 
 **Known issues and fixes**
+
 - Music Note's special signature cards don't seem to work. The card gets played correctly, but the effect does not apply.
 	- Patch: Replace all offending card halves with a random known-good card half from that card's level bracket; remove from pool entirely in Amalgam mode.
 	- Notes: It is probably possible to make them work correctly; actual fix TBD.
